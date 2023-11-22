@@ -1,9 +1,32 @@
+import 'package:developer_calculator/model/item.dart';
+import 'package:developer_calculator/model/number.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../bloc/operation_bloc.dart';
+import '../model/operator.dart';
+import '../model/point.dart';
 import 'button.dart';
 
 class Keyboard extends StatelessWidget {
   const Keyboard({super.key});
+
+  void add(BuildContext context, Item append) {
+    final postManagementBloc = BlocProvider.of<OperationBloc>(context);
+    postManagementBloc.add(Add(
+      append: append,
+    ));
+  }
+
+  void remove(BuildContext context) {
+    final postManagementBloc = BlocProvider.of<OperationBloc>(context);
+    postManagementBloc.add(Remove());
+  }
+
+  void reset(BuildContext context) {
+    final postManagementBloc = BlocProvider.of<OperationBloc>(context);
+    postManagementBloc.add(Init());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +49,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Operator.divide()),
+                child: const Text(
                   "/",
                   style: TextStyle(
                     color: Colors.blue,
@@ -39,8 +63,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Operator.divideInt()),
+                child: const Text(
                   "//",
                   style: TextStyle(
                     color: Colors.blue,
@@ -52,8 +77,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Icon(
+              Button(
+                onTap: () => add(context, Operator.multiply()),
+                child: const Icon(
                   Icons.close,
                   color: Colors.blue,
                   size: 32,
@@ -62,8 +88,10 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Icon(
+              Button(
+                onTap: () => remove(context),
+                onLongPress: () => reset(context),
+                child: const Icon(
                   Icons.backspace_outlined,
                   color: Colors.blue,
                 ),
@@ -83,8 +111,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("7")),
+                child: const Text(
                   "7",
                   style: TextStyle(
                     fontSize: 24,
@@ -94,8 +123,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("8")),
+                child: const Text(
                   "8",
                   style: TextStyle(
                     fontSize: 24,
@@ -105,8 +135,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("9")),
+                child: const Text(
                   "9",
                   style: TextStyle(
                     fontSize: 24,
@@ -116,8 +147,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Operator.subtract()),
+                child: const Text(
                   "-",
                   style: TextStyle(
                     color: Colors.blue,
@@ -141,8 +173,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("4")),
+                child: const Text(
                   "4",
                   style: TextStyle(
                     fontSize: 24,
@@ -152,8 +185,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("5")),
+                child: const Text(
                   "5",
                   style: TextStyle(
                     fontSize: 24,
@@ -163,8 +197,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("6")),
+                child: const Text(
                   "6",
                   style: TextStyle(
                     fontSize: 24,
@@ -174,8 +209,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Operator.add()),
+                child: const Text(
                   "+",
                   style: TextStyle(
                     color: Colors.blue,
@@ -198,8 +234,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("1")),
+                child: const Text(
                   "1",
                   style: TextStyle(
                     fontSize: 24,
@@ -209,8 +246,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("2")),
+                child: const Text(
                   "2",
                   style: TextStyle(
                     fontSize: 24,
@@ -220,8 +258,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("3")),
+                child: const Text(
                   "3",
                   style: TextStyle(
                     fontSize: 24,
@@ -231,8 +270,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Operator.modulo()),
+                child: const Text(
                   "%",
                   style: TextStyle(
                     color: Colors.blue,
@@ -255,8 +295,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => reset(context),
+                child: const Text(
                   "C",
                   style: TextStyle(
                     color: Colors.blue,
@@ -268,8 +309,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Number("0")),
+                child: const Text(
                   "0",
                   style: TextStyle(
                     fontSize: 24,
@@ -279,8 +321,9 @@ class Keyboard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const Button(
-                child: Text(
+              Button(
+                onTap: () => add(context, Point()),
+                child: const Text(
                   ".",
                   style: TextStyle(
                     fontSize: 24,
