@@ -28,19 +28,6 @@ class Keyboard extends StatelessWidget {
               ),
               const Button(
                 child: Text(
-                  "C",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              const Button(
-                child: Text(
                   "/",
                   style: TextStyle(
                     color: Colors.blue,
@@ -70,6 +57,15 @@ class Keyboard extends StatelessWidget {
                   Icons.close,
                   color: Colors.blue,
                   size: 32,
+                ),
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              const Button(
+                child: Icon(
+                  Icons.backspace_outlined,
+                  color: Colors.blue,
                 ),
               ),
               Expanded(
@@ -261,9 +257,11 @@ class Keyboard extends StatelessWidget {
               ),
               const Button(
                 child: Text(
-                  ".",
+                  "C",
                   style: TextStyle(
+                    color: Colors.blue,
                     fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -282,10 +280,10 @@ class Keyboard extends StatelessWidget {
                 child: Container(),
               ),
               const Button(
-                child: Button(
-                  child: Icon(
-                    Icons.backspace_outlined,
-                    color: Colors.blue,
+                child: Text(
+                  ".",
+                  style: TextStyle(
+                    fontSize: 24,
                   ),
                 ),
               ),
@@ -293,10 +291,10 @@ class Keyboard extends StatelessWidget {
                 child: Container(),
               ),
               const Button(
+                color: Colors.blue,
                 child: Text(
                   "=",
                   style: TextStyle(
-                    color: Colors.blue,
                     fontSize: 32,
                   ),
                 ),

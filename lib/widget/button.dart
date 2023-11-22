@@ -4,9 +4,11 @@ class Button extends StatelessWidget {
   const Button({
     super.key,
     required this.child,
+    this.color,
   });
 
   final Widget child;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class Button extends StatelessWidget {
       height: MediaQuery.of(context).size.width * 0.15,
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF31363B),
+          color: color ?? const Color(0xFF31363B),
           borderRadius: const BorderRadius.all(
             Radius.circular(64),
           ),
