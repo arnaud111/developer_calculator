@@ -48,36 +48,11 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
   }
 
   void _onAdd(Add event, Emitter<OperationState> emit) {
-    if (event.append is Operator &&
-        state.operation.isNotEmpty &&
-        state.operation.last is Number) {
+    List<Item>? items = event.append.addToList(state.operation);
+    if (items != null) {
       emit(OperationState(
-        operation: [...state.operation, event.append],
+        operation: items,
       ));
-    } else if (event.append is Point &&
-        state.operation.isNotEmpty &&
-        state.operation.last is Number) {
-      if (state.operation.length > 2 &&
-          state.operation[state.operation.length - 2] is Point) {
-        return;
-      }
-      emit(OperationState(
-        operation: [...state.operation, event.append],
-      ));
-    } else if (event.append is Number) {
-      if (state.operation.isNotEmpty && state.operation.last is Number) {
-        (state.operation.last as Number).addNumber(
-            (event.append as Number).value,
-            state.operation.length > 2 &&
-                state.operation[state.operation.length - 2] is Point);
-        emit(OperationState(
-          operation: state.operation,
-        ));
-      } else {
-        emit(OperationState(
-          operation: [...state.operation, event.append],
-        ));
-      }
     }
   }
 }

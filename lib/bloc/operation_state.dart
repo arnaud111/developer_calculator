@@ -36,7 +36,7 @@ class OperationState {
       if (operation[i] is Operator) {
         treeItems.add(OperatorTree.fromOperator(operation[i] as Operator));
       } else {
-        if (operation.length > i + 1 && operation[i + 1] is Point) {
+        if (operation.length > i + 1 && operation[i + 1].toString() == ".") {
           if (operation.length > i + 2 && operation[i + 2] is Number) {
             treeItems.add(Value.parse("${(operation[i] as Number).value}.${(operation[i + 2] as Number).value}"));
             i += 2;
@@ -44,11 +44,13 @@ class OperationState {
             return;
           }
         } else {
+          if (operation[i].toString() == "-") {
+            return;
+          }
           treeItems.add(Value.parse((operation[i] as Number).value));
         }
       }
     }
-
     result = TreeItem.parse(treeItems);
   }
 

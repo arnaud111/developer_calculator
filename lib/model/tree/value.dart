@@ -6,6 +6,7 @@ class Value extends TreeItem {
   Value(this.value);
 
   factory Value.parse(String value) {
+    print("Value.parse: $value");
     return Value(double.parse(value));
   }
 

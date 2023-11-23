@@ -64,6 +64,15 @@ class OperatorTree extends TreeItem {
         }
         return Value(leftValue / rightValue);
       case OperatorType.divideInt:
+        bool isNegative = false;
+        if (leftValue < 0) {
+          leftValue = -leftValue;
+          isNegative = !isNegative;
+        }
+        if (rightValue < 0) {
+          rightValue = -rightValue;
+          isNegative = !isNegative;
+        }
         int cnt = 0;
         if (rightValue == 0) {
           return null;
@@ -71,6 +80,9 @@ class OperatorTree extends TreeItem {
         while (leftValue! >= rightValue) {
           leftValue -= rightValue;
           cnt++;
+        }
+        if (isNegative) {
+          cnt = -cnt;
         }
         return Value(cnt.toDouble());
       case OperatorType.modulo:

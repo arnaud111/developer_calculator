@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:developer_calculator/model/item/item.dart';
 
 import '../operation_type.dart';
+import 'number.dart';
 
 class Operator extends Item {
 
@@ -48,5 +51,20 @@ class Operator extends Item {
 
   static Operator modulo() {
     return Operator(OperatorType.modulo);
+  }
+
+  @override
+  List<Item>? addToList(List<Item> items) {
+    if (items.isNotEmpty && items.last is Number && (items.last as Number).value != "-") {
+      return [...items, this];
+    }
+    if (type == OperatorType.subtract && (items.isEmpty || items.last is! Number || (items.last as Number).value != "-")) {
+      if (items.isNotEmpty && items.last.toString() == ".") {
+        return null;
+      }
+      return [...items, Number("-")];
+
+    }
+    return null;
   }
 }
