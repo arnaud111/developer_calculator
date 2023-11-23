@@ -17,7 +17,7 @@ class OperationState {
 
   void createResult() {
     List<Token>? tokens = Lexer.compute(operation);
-    if (tokens == null) {
+    if (tokens == null || tokens.length < 2) {
       result = null;
       return;
     }

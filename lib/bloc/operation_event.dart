@@ -7,6 +7,8 @@ class Init extends OperationEvent {}
 
 class Remove extends OperationEvent {}
 
+class Compute extends OperationEvent {}
+
 class Add extends OperationEvent {
   final String append;
 

@@ -24,6 +24,11 @@ class Keyboard extends StatelessWidget {
     postManagementBloc.add(Init());
   }
 
+  void compute(BuildContext context) {
+    final postManagementBloc = BlocProvider.of<OperationBloc>(context);
+    postManagementBloc.add(Compute());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -373,6 +378,7 @@ class Keyboard extends StatelessWidget {
               Column(
                 children: [
                   Button(
+                    onTap: () => compute(context),
                     height: MediaQuery.of(context).size.width * 0.34,
                     color: Colors.blue,
                     child: const Text(

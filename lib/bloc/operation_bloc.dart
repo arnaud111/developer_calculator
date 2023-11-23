@@ -15,6 +15,7 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
     on<Init>(_onInit);
     on<Remove>(_onRemove);
     on<Add>(_onAdd);
+    on<Compute>(_onCompute);
   }
 
   void _onInit(Init event, Emitter<OperationState> emit) {
@@ -50,5 +51,15 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
     emit(OperationState(
       operation: state.operation + event.append,
     ));
+  }
+
+  void _onCompute(Compute event, Emitter<OperationState> emit) {
+    double? result = state.result?.compute();
+
+    if (result != null) {
+      emit(OperationState(
+        operation: "${result % 1 > 0 ? result : result.toInt()}",
+      ));
+    }
   }
 }
