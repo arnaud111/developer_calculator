@@ -1,14 +1,6 @@
-import 'package:developer_calculator/model/item.dart';
+import 'package:developer_calculator/model/item/item.dart';
 
-enum OperatorType {
-  add,
-  subtract,
-  multiply,
-  divide,
-  divideInt,
-  modulo,
-  equal,
-}
+import '../operation_type.dart';
 
 class Operator extends Item {
 
@@ -31,8 +23,6 @@ class Operator extends Item {
         return '//';
       case OperatorType.modulo:
         return '%';
-      case OperatorType.equal:
-        return '=';
     }
   }
 
@@ -58,9 +48,5 @@ class Operator extends Item {
 
   static Operator modulo() {
     return Operator(OperatorType.modulo);
-  }
-
-  static Operator equal() {
-    return Operator(OperatorType.equal);
   }
 }

@@ -1,10 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:developer_calculator/model/item.dart';
-import 'package:developer_calculator/model/number.dart';
+import 'package:developer_calculator/model/item/item.dart';
+import 'package:developer_calculator/model/item/number.dart';
+import 'package:developer_calculator/model/tree/operator_tree.dart';
+import 'package:developer_calculator/model/tree/tree_item.dart';
 import 'package:flutter/material.dart';
 
-import '../model/operator.dart';
-import '../model/point.dart';
+import '../model/item/operator.dart';
+import '../model/item/point.dart';
+import '../model/tree/value.dart';
 
 part 'operation_event.dart';
 

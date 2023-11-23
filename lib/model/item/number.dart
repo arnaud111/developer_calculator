@@ -1,4 +1,4 @@
-import 'package:developer_calculator/model/item.dart';
+import 'package:developer_calculator/model/item/item.dart';
 
 class Number extends Item {
   String value = "";

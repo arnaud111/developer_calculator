@@ -1,11 +1,11 @@
-import 'package:developer_calculator/model/item.dart';
-import 'package:developer_calculator/model/number.dart';
+import 'package:developer_calculator/model/item/item.dart';
+import 'package:developer_calculator/model/item/number.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/operation_bloc.dart';
-import '../model/operator.dart';
-import '../model/point.dart';
+import '../model/item/operator.dart';
+import '../model/item/point.dart';
 import 'button.dart';
 
 class Keyboard extends StatelessWidget {

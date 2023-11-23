@@ -9,16 +9,33 @@ class OperationText extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OperationBloc, OperationState>(
       builder: (context, state) {
+
+        double? result = state.result?.getValue();
+
         return Container(
           padding: const EdgeInsets.all(16),
           alignment: Alignment.centerRight,
-          child: Text(
-            state.toString(),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                state.toString(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              if (result != null)
+                Text(
+                  "= ${result}",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+            ],
           ),
         );
       },

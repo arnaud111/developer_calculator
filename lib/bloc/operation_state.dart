@@ -2,10 +2,13 @@ part of 'operation_bloc.dart';
 
 class OperationState {
   List<Item> operation;
+  TreeItem? result;
 
   OperationState({
     this.operation = const [],
-  });
+  }) {
+    createResult();
+  }
 
   @override
   String toString() {
@@ -21,4 +24,32 @@ class OperationState {
 
     return result;
   }
+
+  void createResult() {
+    List<TreeItem> treeItems = [];
+
+    if (operation.isEmpty || operation.last is Operator) {
+      return;
+    }
+
+    for (int i = 0; i < operation.length; i++) {
+      if (operation[i] is Operator) {
+        treeItems.add(OperatorTree.fromOperator(operation[i] as Operator));
+      } else {
+        if (operation.length > i + 1 && operation[i + 1] is Point) {
+          if (operation.length > i + 2 && operation[i + 2] is Number) {
+            treeItems.add(Value.parse("${(operation[i] as Number).value}.${(operation[i + 2] as Number).value}"));
+            i += 2;
+          } else {
+            return;
+          }
+        } else {
+          treeItems.add(Value.parse((operation[i] as Number).value));
+        }
+      }
+    }
+
+    result = TreeItem.parse(treeItems);
+  }
+
 }
