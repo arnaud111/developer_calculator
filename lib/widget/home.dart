@@ -12,21 +12,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Container(),
-      ),
-      body: const Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: OperationText(),
-          ),
-          Expanded(
-            flex: 4,
-            child: Keyboard(),
-          ),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            const Expanded(
+              child: OperationText(),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.width * 1.26,
+              child: Keyboard(),
+            ),
+          ],
+        ),
       ),
     );
   }

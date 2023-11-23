@@ -42,74 +42,60 @@ class Keyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "("),
                 child: const Text(
                   "(",
                   style: TextStyle(
-                    color: Colors.blueGrey,
+                    color: Colors.blue,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, ")"),
                 child: const Text(
                   ")",
                   style: TextStyle(
-                    color: Colors.blueGrey,
+                    color: Colors.blue,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                child: const Text(
-                  " ",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                width: MediaQuery.of(context).size.width * 0.38,
+                onTap: () => remove(context),
+                onLongPress: () => reset(context),
+                child: const Icon(
+                  Icons.backspace_outlined,
+                  color: Colors.blue,
                 ),
               ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                child: const Text(
-                  " ",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
-          Expanded(
-            child: Container(),
+          Container(
+            height: MediaQuery.of(context).size.width * 0.04,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "/"),
@@ -122,8 +108,8 @@ class Keyboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "~/"),
@@ -136,8 +122,8 @@ class Keyboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "*"),
@@ -147,67 +133,8 @@ class Keyboard extends StatelessWidget {
                   size: 32,
                 ),
               ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => remove(context),
-                onLongPress: () => reset(context),
-                child: const Icon(
-                  Icons.backspace_outlined,
-                  color: Colors.blue,
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Container(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => add(context, "7"),
-                child: const Text(
-                  "7",
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => add(context, "8"),
-                child: const Text(
-                  "8",
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => add(context, "9"),
-                child: const Text(
-                  "9",
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "-"),
@@ -220,56 +147,56 @@ class Keyboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
-          Expanded(
-            child: Container(),
+          Container(
+            height: MediaQuery.of(context).size.width * 0.04,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "4"),
+                onTap: () => add(context, "7"),
                 child: const Text(
-                  "4",
+                  "7",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "5"),
+                onTap: () => add(context, "8"),
                 child: const Text(
-                  "5",
+                  "8",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "6"),
+                onTap: () => add(context, "9"),
                 child: const Text(
-                  "6",
+                  "9",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "+"),
@@ -281,56 +208,56 @@ class Keyboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
-          Expanded(
-            child: Container(),
+          Container(
+            height: MediaQuery.of(context).size.width * 0.04,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "1"),
+                onTap: () => add(context, "4"),
                 child: const Text(
-                  "1",
+                  "4",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "2"),
+                onTap: () => add(context, "5"),
                 child: const Text(
-                  "2",
+                  "5",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
-                onTap: () => add(context, "3"),
+                onTap: () => add(context, "6"),
                 child: const Text(
-                  "3",
+                  "6",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
               Button(
                 onTap: () => add(context, "%"),
@@ -342,70 +269,123 @@ class Keyboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
-          Expanded(
-            child: Container(),
+          Container(
+            height: MediaQuery.of(context).size.width * 0.04,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
-              Button(
-                onTap: () => reset(context),
-                child: const Text(
-                  "C",
-                  style: TextStyle(
+              Column(
+                children: [
+                  Button(
+                    onTap: () => add(context, "1"),
+                    child: const Text(
+                      "1",
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.width * 0.04,
+                  ),
+                  Button(
+                    onTap: () => reset(context),
+                    child: const Text(
+                      "C",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
+              ),
+              Column(
+                children: [
+                  Button(
+                    onTap: () => add(context, "2"),
+                    child: const Text(
+                      "2",
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.width * 0.04,
+                  ),
+                  Button(
+                    onTap: () => add(context, "0"),
+                    child: const Text(
+                      "0",
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
+              ),
+              Column(
+                children: [
+                  Button(
+                    onTap: () => add(context, "3"),
+                    child: const Text(
+                      "3",
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.width * 0.04,
+                  ),
+                  Button(
+                    onTap: () => add(context, "."),
+                    child: const Text(
+                      ".",
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
+              ),
+              Column(
+                children: [
+                  Button(
+                    height: MediaQuery.of(context).size.width * 0.34,
                     color: Colors.blue,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                    child: const Text(
+                      "=",
+                      style: TextStyle(
+                        fontSize: 32,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => add(context, "0"),
-                child: const Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Button(
-                onTap: () => add(context, "."),
-                child: const Text(
-                  ".",
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              const Button(
-                color: Colors.blue,
-                child: Text(
-                  "=",
-                  style: TextStyle(
-                    fontSize: 32,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),

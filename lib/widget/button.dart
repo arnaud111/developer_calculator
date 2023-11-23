@@ -7,18 +7,22 @@ class Button extends StatelessWidget {
     this.color,
     this.onTap,
     this.onLongPress,
+    this.width,
+    this.height,
   });
 
   final Widget child;
   final Color? color;
   final Function()? onTap;
   final Function()? onLongPress;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.15,
-      height: MediaQuery.of(context).size.width * 0.15,
+      width: width ?? MediaQuery.of(context).size.width * 0.15,
+      height: height ?? MediaQuery.of(context).size.width * 0.15,
       child: GestureDetector(
         onTap: onTap,
         onLongPress: onLongPress,
