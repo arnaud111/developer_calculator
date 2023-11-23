@@ -25,8 +25,23 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
 
   void _onRemove(Remove event, Emitter<OperationState> emit) {
     if (state.operation.isNotEmpty) {
+      int indexRemoved = state.operation.length - 1;
+
+      if (state.operation[indexRemoved] == "~") {
+        emit(OperationState(
+          operation: state.operation.substring(0, indexRemoved) + state.operation.substring(indexRemoved + 2),
+        ));
+        return;
+      }
+      if (indexRemoved > 0 && state.operation[indexRemoved] == "/" && state.operation[indexRemoved - 1] == "~") {
+        emit(OperationState(
+          operation: state.operation.substring(0, indexRemoved - 1) + state.operation.substring(indexRemoved + 1),
+        ));
+        return;
+      }
+
       emit(OperationState(
-        operation: state.operation.substring(0, state.operation.length - 1),
+        operation: state.operation.substring(0, indexRemoved) + state.operation.substring(indexRemoved + 1),
       ));
     }
   }

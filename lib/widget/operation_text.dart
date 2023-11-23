@@ -28,7 +28,7 @@ class OperationText extends StatelessWidget {
               ),
               if (result != null)
                 Text(
-                  "= $result",
+                  "= ${result % 1 > 0 ? result : result.toInt()}",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,

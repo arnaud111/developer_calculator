@@ -12,7 +12,7 @@ class Lexer {
     int right = 0;
 
     for (right = 0; right < input.length; right++) {
-      if (input[right] == "*" || input[right] == "/" || input[right] == "%" || input[right] == "+" || input[right] == "-") {
+      if (input[right] == "*" || input[right] == "/" || input[right] == "%" || input[right] == "+" || input[right] == "-" || input[right] == "~") {
         if (left != right) {
           tokens.add(TokenNumber(int.parse(input.substring(left, right))));
         }
@@ -23,9 +23,13 @@ class Lexer {
             break;
           case "/":
             tokens.add(TokenOperator.divide());
+            break;
+          case "~":
             if (right + 1 < input.length && input[right + 1] == "/") {
               tokens.add(TokenOperator.divideInt());
               right++;
+            } else {
+              return null;
             }
             break;
           case "%":
