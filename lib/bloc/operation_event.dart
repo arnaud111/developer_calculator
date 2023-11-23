@@ -8,7 +8,7 @@ class Init extends OperationEvent {}
 class Remove extends OperationEvent {}
 
 class Add extends OperationEvent {
-  final Item append;
+  final String append;
 
   Add({
     required this.append,

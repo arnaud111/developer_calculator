@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
             child: OperationText(),
           ),
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Keyboard(),
           ),
         ],

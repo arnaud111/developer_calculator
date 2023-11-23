@@ -1,57 +1,27 @@
 part of 'operation_bloc.dart';
 
 class OperationState {
-  List<Item> operation;
+  String operation;
   TreeItem? result;
 
   OperationState({
-    this.operation = const [],
+    this.operation = "",
   }) {
     createResult();
   }
 
   @override
   String toString() {
-    String result = "";
-
-    for (final item in operation) {
-      if (item is Operator) {
-        result += " ${item.toString()} ";
-        continue;
-      }
-      result += item.toString();
-    }
-
-    return result;
+    return operation;
   }
 
   void createResult() {
-    List<TreeItem> treeItems = [];
-
-    if (operation.isEmpty || operation.last is Operator) {
+    List<Token>? tokens = Lexer.compute(operation);
+    if (tokens == null) {
+      result = null;
       return;
     }
-
-    for (int i = 0; i < operation.length; i++) {
-      if (operation[i] is Operator) {
-        treeItems.add(OperatorTree.fromOperator(operation[i] as Operator));
-      } else {
-        if (operation.length > i + 1 && operation[i + 1].toString() == ".") {
-          if (operation.length > i + 2 && operation[i + 2] is Number) {
-            treeItems.add(Value.parse("${(operation[i] as Number).value}.${(operation[i + 2] as Number).value}"));
-            i += 2;
-          } else {
-            return;
-          }
-        } else {
-          if (operation[i].toString() == "-") {
-            return;
-          }
-          treeItems.add(Value.parse((operation[i] as Number).value));
-        }
-      }
-    }
-    result = TreeItem.parse(treeItems);
+    result = Parser.compute(tokens);
   }
 
 }

@@ -10,7 +10,7 @@ class OperationText extends StatelessWidget {
     return BlocBuilder<OperationBloc, OperationState>(
       builder: (context, state) {
 
-        double? result = state.result?.getValue();
+        double? result = state.result?.compute();
 
         return Container(
           padding: const EdgeInsets.all(16),
@@ -28,7 +28,7 @@ class OperationText extends StatelessWidget {
               ),
               if (result != null)
                 Text(
-                  "= ${result}",
+                  "= $result",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
