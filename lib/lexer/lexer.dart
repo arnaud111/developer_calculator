@@ -14,7 +14,7 @@ class Lexer {
     for (right = 0; right < input.length; right++) {
       if (input[right] == "*" || input[right] == "/" || input[right] == "%" || input[right] == "+" || input[right] == "-" || input[right] == "~") {
         if (left != right) {
-          tokens.add(TokenNumber(int.parse(input.substring(left, right))));
+          tokens.add(TokenNumber(input.substring(left, right)));
         }
 
         switch (input[right]) {
@@ -46,21 +46,21 @@ class Lexer {
         left = right + 1;
       } else if (input[right] == ".") {
         if (left != right) {
-          tokens.add(TokenNumber(int.parse(input.substring(left, right))));
+          tokens.add(TokenNumber(input.substring(left, right)));
         }
 
         tokens.add(TokenPoint());
         left = right + 1;
       } else if (input[right] == "(") {
         if (left != right) {
-          tokens.add(TokenNumber(int.parse(input.substring(left, right))));
+          tokens.add(TokenNumber(input.substring(left, right)));
         }
 
         tokens.add(TokenParenthesis.left());
         left = right + 1;
       } else if (input[right] == ")") {
         if (left != right) {
-          tokens.add(TokenNumber(int.parse(input.substring(left, right))));
+          tokens.add(TokenNumber(input.substring(left, right)));
         }
 
         tokens.add(TokenParenthesis.right());
@@ -69,7 +69,7 @@ class Lexer {
     }
 
     if (left != right) {
-      tokens.add(TokenNumber(int.parse(input.substring(left, right))));
+      tokens.add(TokenNumber(input.substring(left, right)));
     }
 
     return tokens;

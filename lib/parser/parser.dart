@@ -17,7 +17,7 @@ class Parser {
       if (tokens[i] is TokenOperator &&
           (tokens[i] as TokenOperator).operatorType == OperatorType.subtract &&
           (i == 0 || tokens[i - 1] is TokenOperator || tokens[i - 1] is TokenParenthesis)) {
-        result.add(TokenNumber(-1));
+        result.add(TokenNumber("-1"));
         result.add(TokenOperator.multiplyMaxPriority());
         continue;
       }

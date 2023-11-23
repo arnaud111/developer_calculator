@@ -1,7 +1,7 @@
 import 'package:developer_calculator/lexer/token/token.dart';
 
 class TokenNumber extends Token {
-  int value;
+  String value;
 
   TokenNumber(this.value);
 
