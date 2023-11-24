@@ -12,7 +12,9 @@ class OperationText extends StatelessWidget {
         double? result = state.result?.compute();
 
         return Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
           alignment: Alignment.centerRight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -39,10 +41,12 @@ class OperationText extends StatelessWidget {
                             state.operation.length + 1, (index) => index)
                         .map((index) {
                       if (index == state.cursor) {
-                        return Container(
-                          height: 32,
-                          width: 2,
-                          color: Colors.blue,
+                        return GestureDetector(
+                          child: Container(
+                            height: 32,
+                            width: 2,
+                            color: Colors.blue,
+                          ),
                         );
                       }
 
