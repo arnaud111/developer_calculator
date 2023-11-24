@@ -38,9 +38,9 @@ class _HomePageState extends State<HomePage> {
                     child: const OperationText(),
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.width * 1.26,
-                  child: Keyboard(),
+                  child: const Keyboard(),
                 ),
               ],
             ),
