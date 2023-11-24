@@ -50,12 +50,12 @@ class OperationText extends StatelessWidget {
                               Move(
                                 index:
                                     (index > state.cursor ? index - 1 : index) +
-                                        (details.localPosition.dx > 10 ? 1 : 0),
+                                        (details.localPosition.dx > (getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]) / 2) ? 1 : 0),
                               ),
                             );
                       },
                       child: SizedBox(
-                        width: 20,
+                        width: getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]),
                         child: Center(
                           child: Text(
                             state.operation[
@@ -83,5 +83,16 @@ class OperationText extends StatelessWidget {
         );
       },
     );
+  }
+
+  double getCharWidth(String char) {
+    switch (char) {
+      case "%":
+        return 26;
+      case ".":
+        return 12;
+      default:
+        return 20;
+    }
   }
 }
