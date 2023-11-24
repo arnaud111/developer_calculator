@@ -9,6 +9,15 @@ class Remove extends OperationEvent {}
 
 class Compute extends OperationEvent {}
 
+class LoadOperation extends OperationEvent {
+
+  final String operation;
+
+  LoadOperation({
+    required this.operation,
+  });
+}
+
 class Move extends OperationEvent {
 
   final int index;

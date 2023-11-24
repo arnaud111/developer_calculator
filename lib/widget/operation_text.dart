@@ -9,7 +9,6 @@ class OperationText extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OperationBloc, OperationState>(
       builder: (context, state) {
-
         double? result = state.result?.compute();
 
         return Container(
@@ -18,11 +17,24 @@ class OperationText extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: const Icon(
+                  Icons.history,
+                  size: 32,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
               SizedBox(
                 height: 32,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: List.generate(state.operation.length + 1, (index) => index)
+                  children: List.generate(
+                          state.operation.length + 1, (index) => index)
                       .map((index) {
                     if (index == state.cursor) {
                       return Container(
@@ -36,17 +48,21 @@ class OperationText extends StatelessWidget {
                       onTapUp: (TapUpDetails details) {
                         context.read<OperationBloc>().add(
                               Move(
-                                index: (index > state.cursor ? index - 1 : index) + (details.localPosition.dx > 10 ? 1 : 0),
+                                index:
+                                    (index > state.cursor ? index - 1 : index) +
+                                        (details.localPosition.dx > 10 ? 1 : 0),
                               ),
                             );
                       },
                       child: SizedBox(
                         width: 20,
-                        child: Text(
-                          state.operation[
-                              (index > state.cursor ? index - 1 : index)],
-                          style: const TextStyle(
-                            fontSize: 32,
+                        child: Center(
+                          child: Text(
+                            state.operation[
+                                (index > state.cursor ? index - 1 : index)],
+                            style: const TextStyle(
+                              fontSize: 32,
+                            ),
                           ),
                         ),
                       ),

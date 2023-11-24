@@ -1,3 +1,4 @@
+import 'package:developer_calculator/widget/drawer_history.dart';
 import 'package:developer_calculator/widget/keyboard.dart';
 import 'package:developer_calculator/widget/operation_text.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
       child: BlocBuilder<OperationBloc, OperationState>(
         builder: (context, state) {
           return Scaffold(
+            drawer: const DrawerHistory(),
             body: Column(
               children: [
                 const SizedBox(

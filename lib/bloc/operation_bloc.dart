@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:developer_calculator/parser/tree/tree_operation.dart';
 import 'package:flutter/material.dart';
 
 import '../lexer/lexer.dart';
 import '../lexer/token/token.dart';
+import '../model/history_item.dart';
 import '../parser/parser.dart';
 import '../parser/tree/tree_item.dart';
 
@@ -17,11 +19,13 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
     on<Add>(_onAdd);
     on<Compute>(_onCompute);
     on<Move>(_onMove);
+    on<LoadOperation>(_onLoadOperation);
   }
 
   void _onInit(Init event, Emitter<OperationState> emit) {
-    emit(OperationState(
+    emit(state.copyWith(
       operation: "",
+      cursor: 0,
     ));
   }
 
@@ -69,8 +73,10 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
     double? result = state.result?.compute();
 
     if (result != null) {
+      state.addHistory(result);
       emit(state.copyWith(
         operation: "${result % 1 > 0 ? result : result.toInt()}",
+        cursor: "${result % 1 > 0 ? result : result.toInt()}".length,
       ));
     }
   }
@@ -78,6 +84,13 @@ class OperationBloc extends Bloc<OperationEvent, OperationState> {
   void _onMove(Move event, Emitter<OperationState> emit) {
     emit(state.copyWith(
       cursor: event.index,
+    ));
+  }
+
+  void _onLoadOperation(LoadOperation event, Emitter<OperationState> emit) {
+    emit(state.copyWith(
+      operation: event.operation,
+      cursor: event.operation.length,
     ));
   }
 }
