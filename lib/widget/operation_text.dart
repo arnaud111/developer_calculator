@@ -18,20 +18,47 @@ class OperationText extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                state.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 32,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: List.generate(state.operation.length + 1, (index) => index)
+                      .map((index) {
+                    if (index == state.cursor) {
+                      return Container(
+                        height: 32,
+                        width: 2,
+                        color: Colors.blue,
+                      );
+                    }
+
+                    return GestureDetector(
+                      onTapUp: (TapUpDetails details) {
+                        context.read<OperationBloc>().add(
+                              Move(
+                                index: (index > state.cursor ? index - 1 : index) + (details.localPosition.dx > 10 ? 1 : 0),
+                              ),
+                            );
+                      },
+                      child: SizedBox(
+                        width: 20,
+                        child: Text(
+                          state.operation[
+                              (index > state.cursor ? index - 1 : index)],
+                          style: const TextStyle(
+                            fontSize: 32,
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
               if (result != null)
                 Text(
                   "= ${result % 1 > 0 ? result : result.toInt()}",
                   style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

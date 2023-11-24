@@ -9,6 +9,15 @@ class Remove extends OperationEvent {}
 
 class Compute extends OperationEvent {}
 
+class Move extends OperationEvent {
+
+  final int index;
+
+  Move({
+    required this.index,
+  });
+}
+
 class Add extends OperationEvent {
   final String append;
 
