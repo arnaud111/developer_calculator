@@ -26,48 +26,51 @@ class OperationText extends StatelessWidget {
                   size: 32,
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ),
-              SizedBox(
-                height: 32,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(
-                          state.operation.length + 1, (index) => index)
-                      .map((index) {
-                    if (index == state.cursor) {
-                      return Container(
-                        height: 32,
-                        width: 2,
-                        color: Colors.blue,
-                      );
-                    }
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                ),
+                child: SizedBox(
+                  height: 32,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    reverse: true,
+                    children: List.generate(
+                            state.operation.length + 1, (index) => index)
+                        .map((index) {
+                      if (index == state.cursor) {
+                        return Container(
+                          height: 32,
+                          width: 2,
+                          color: Colors.blue,
+                        );
+                      }
 
-                    return GestureDetector(
-                      onTapUp: (TapUpDetails details) {
-                        context.read<OperationBloc>().add(
-                              Move(
-                                index:
-                                    (index > state.cursor ? index - 1 : index) +
-                                        (details.localPosition.dx > (getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]) / 2) ? 1 : 0),
+                      return GestureDetector(
+                        onTapUp: (TapUpDetails details) {
+                          context.read<OperationBloc>().add(
+                                Move(
+                                  index:
+                                      (index > state.cursor ? index - 1 : index) +
+                                          (details.localPosition.dx > (getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]) / 2) ? 1 : 0),
+                                ),
+                              );
+                        },
+                        child: SizedBox(
+                          width: getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]),
+                          child: Center(
+                            child: Text(
+                              state.operation[
+                                  (index > state.cursor ? index - 1 : index)],
+                              style: const TextStyle(
+                                fontSize: 32,
                               ),
-                            );
-                      },
-                      child: SizedBox(
-                        width: getCharWidth(state.operation[(index > state.cursor ? index - 1 : index)]),
-                        child: Center(
-                          child: Text(
-                            state.operation[
-                                (index > state.cursor ? index - 1 : index)],
-                            style: const TextStyle(
-                              fontSize: 32,
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }).toList().reversed.toList(),
+                  ),
                 ),
               ),
               if (result != null)
